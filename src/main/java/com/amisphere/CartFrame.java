@@ -122,7 +122,8 @@ public class CartFrame extends JFrame implements UserUpdateListener {
 
 		this.checkoutCart.addActionListener( event -> {
 			try {
-				for( boolean cancel = false;market.getUser().get().getCredits() < market.getUser().get().getCartCredits() && !cancel; ) {
+				boolean cancel = false;
+				while( market.getUser().get().getCredits() < market.getUser().get().getCartCredits() && !cancel ) {
 					final JPanel panel = new JPanel( new GridLayout( 0,1,2,2 ) );
 					panel.add( new JLabel( "Your balance isn't sufficient for your cart",SwingConstants.LEFT ) );
 					final JButton launch = new JButton( "Launch browser to continue with checkout..." );
@@ -144,7 +145,9 @@ public class CartFrame extends JFrame implements UserUpdateListener {
 					else
 						cancel = true;
 				}
-
+				
+				if( ! cancel )
+					market.buyCart( market.getUser().get() );
 			}
 			catch( final IOException e ) {
 				// TODO Auto-generated catch block

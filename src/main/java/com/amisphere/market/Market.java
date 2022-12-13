@@ -216,7 +216,7 @@ public final class Market {
 			this.download_function_addtocart = new URL( this.server,"download/functions/addtocart.php" );
 			this.download_function_removefromcart = new URL( this.server,"download/functions/removefromcart.php" );
 			this.download_function_checkout = new URL( this.server,"checkout.php" );
-			this.download_function_buy = new URL( this.server,"buy.php" );
+			this.download_function_buy = new URL( this.server,"download/functions/buy.php" );
 			this.download_function_filemanager = new URL( this.server,"download/functions/file_manager.php" );
 			this.download_function_pdforderhistory = new URL( this.server,"download/functions/pdforderhistory.php" );
 
@@ -741,6 +741,8 @@ public final class Market {
 			buy( user,entry );
 			removeFromCart( user,entry );
 		}
+
+		login( user.getAuthToken() );
 	}
 
 	private void buy( final User user,final CartEntry entry ) throws IOException {
