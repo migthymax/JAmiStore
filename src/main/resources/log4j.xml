@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<properties>
+		<property name="baseDir">logs</property>
+	</properties>
+	<appenders>
+		<Console name="CONSOLE" target="SYSTEM_OUT">
+			<ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="%d{ISO8601} %-5p [%t] %c: %m%n" />
+		</Console>
+    </appenders>
+	<loggers>
+		<root level="trace">
+			<appender-ref ref="CONSOLE" />
+		</root>
+	</loggers>
+</configuration>
